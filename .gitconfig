@@ -1,0 +1,37 @@
+[user]
+    name = David Idol
+    email = david.idol@gmail.com
+[credential]
+    helper = osxkeychain
+[push]
+    default = current
+[difftool]
+    prompt = false
+[mergetool]
+    prompt = false
+[core]
+    excludesfile = ~/.gitignore
+    autocrlf = false
+    whitespace = nowarn
+    editor = code --wait
+[alias]
+    co = checkout
+    br = branch
+    ci = commit
+    st = status
+    up = !git pull --rebase --prune $@ && git submodule update --init --recursive
+    cob = checkout -b
+    cm = !git add -A && git commit -m
+    save = !git add -A && git commit -m 'SAVEPOINT'
+    wip = !git add -u && git commit -m "WIP"
+    undo = reset HEAD~1 --mixed
+    amend = commit -a --amend
+    wipe = !git add -A && git commit -qm 'WIPE SAVEPOINT' && git reset HEAD~1 --hard
+    bclean = "!f() { git branch --merged ${1-master} | grep -v " ${1-master}$" | xargs git branch -d; }; f"
+    bdone = "!f() { git checkout ${1-master} && git up && git bclean ${1-master}; }; f"
+    last = log -1 HEAD
+    rbr = !git reflog show --pretty=format:'%gs ~ %gd' --date=relative | grep 'checkout:' | grep -oE '[^ ]+ ~ .*' | awk -F~ '!seen[$1]++' | head -n 10 | awk -F' ~ HEAD@{' '{printf(\"  \\033[33m%s: \\033[37m %s\\033[0m\\n\", substr($2, 1, length($2)-1), $1)}'
+[pull]
+    rebase = false
+[init]
+    defaultBranch = master

@@ -1,0 +1,11 @@
+package cd
+package cdb
+package colored-man-pages
+package foreign-env
+package nvm
+package osx
+package peco
+package title
+package z
+theme bobthefish
+theme default
