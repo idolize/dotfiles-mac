@@ -7,3 +7,6 @@
 
 # Git Subrepo
 # test -e {$HOME}/.gitsubrepo/git-subrepo/.fish.rc; and source {$HOME}/.gitsubrepo/git-subrepo/.fish.rc
+
+# VS Code default editor
+set -Ux EDITOR "code -w"
